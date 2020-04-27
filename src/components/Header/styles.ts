@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   size?: 'small' | 'large';
+  isDash: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -31,6 +32,19 @@ export const Container = styled.div<ContainerProps>`
           opacity: 0.6;
         }
       }
+
+      ${props =>
+        props.isDash
+          ? css`
+              a:first-child {
+                border-bottom: 2px solid #e8842e;
+              }
+            `
+          : css`
+              a + a {
+                border-bottom: 2px solid #e8842e;
+              }
+            `}
     }
   }
 `;
